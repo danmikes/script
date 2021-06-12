@@ -9,19 +9,20 @@ case $1 in
 
   code)
     test -f $2 && code $2 ||
+    test -f package.json && code . ||
     code .
   ;;
 
   charm)
-    test -f $2 && open -a 'PyCharm CE' $2 ||
-    open -a 'PyCharm CE'
+    test -f $2/pyenv.cfg && charm $2 ||
+    test -f pyenv.cfg && open charm . ||
+    charm .
   ;;
 
   idea)
-    test -f $2.iml && open -a 'IntelliJ Idea' $2.iml ||
-    test -f $2/$2.iml && open -a 'IntelliJ Idea' $2/$2.iml ||
-    test -f pom.xml && open -a 'IntelliJ Idea' pom.xml ||
-    test -f $2/pom.xml && open -a 'IntelliJ Idea' $2/pom.xml
+    test -f $2/$2.iml && idea $2 ||
+    test -f $2.iml && idea . ||
+    idea .
   ;;
 
   *)
