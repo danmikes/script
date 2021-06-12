@@ -13,10 +13,10 @@ case $1 in
   ;;
 
   idea)
-    open -a 'IntelliJ Idea' $2.iml ||
-    open -a 'IntelliJ Idea' $2/$2.iml ||
-    open -a 'IntelliJ Idea' pom.xml ||
-    open -a 'IntelliJ Idea' $2/pom.xml
+    test -f $2.iml && open -a 'IntelliJ Idea' $2.iml ||
+    test -f $2/$2.iml && open -a 'IntelliJ Idea' $2/$2.iml ||
+    test -f pom.xml && open -a 'IntelliJ Idea' pom.xml ||
+    test -f $2/pom.xml && open -a 'IntelliJ Idea' $2/pom.xml
   ;;
 
   *)
