@@ -1,0 +1,27 @@
+#!/bin/bash
+#open app project
+#< xx $1 $2 >
+#[code idea | (x-app)]
+
+set +e
+
+case $1 in
+
+  code)
+    code $2 ||
+    code .
+  ;;
+
+  idea)
+    open -a 'IntelliJ Idea' $2.iml ||
+    open -a 'IntelliJ Idea' $2/$2.iml ||
+    open -a 'IntelliJ Idea' pom.xml ||
+    open -a 'IntelliJ Idea' $2/pom.xml
+  ;;
+
+  *)
+    echo -e '[ xx <app> <project> ]'
+  ;;
+
+esac
+
