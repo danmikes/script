@@ -8,8 +8,13 @@ set +e
 case $1 in
 
   code)
-    code $2 ||
+    test -f $2 && code $2 ||
     code .
+  ;;
+
+  charm)
+    test -f $2 && open -a 'PyCharm CE' $2 ||
+    open -a 'PyCharm CE'
   ;;
 
   idea)
@@ -24,4 +29,3 @@ case $1 in
   ;;
 
 esac
-
