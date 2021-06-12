@@ -1,0 +1,53 @@
+#!/bin/bash
+#sync mac & grey
+#< cc $1 >
+#[ pend pen macd mac ]
+
+set +e
+
+ex="--exclude ".DocumentRevisions-V100" --exclude ".DS_Store" --exclude ".fseventsd" --exclude ".Spotlight-V100" --exclude ".TemporaryItems" --exclude ".Trashes""
+
+diskutil mount grey
+
+#rm -rf source-directory
+
+#use variable for path
+
+if mount | grep -qs /Volumes/grey; then
+
+  case $1 in
+
+    pend)
+      echo -e "--delete MAC < PEN"
+      rsync -ravu --delete $ex /Volumes/grey/Documents/ ~/Documents
+    ;;
+
+    pen)
+      echo -e "MAC < PEN"
+      rsync -ravu $ex /Volumes/grey/Documents/ ~/Documents
+    ;;
+
+    macd)
+      echo -e "--delete MAC > PEN"
+      rsync -ravu --delete $ex ~/Documents/ /Volumes/grey/Documents
+    ;;
+
+    mac)
+      echo -e "MAC > PEN"
+      rsync -ravu $ex ~/Documents/ /Volumes/grey/Documents
+    ;;
+
+    *)
+      echo -e "to sync enter : < gg mac[d]/pen[d] | mac=mac pen=grey d=del>"
+      say "error"
+    ;;
+
+  esac
+
+else echo -e "NO PEN"
+  say "no flash"
+
+fi
+
+diskutil umount grey
+say "ready"

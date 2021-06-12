@@ -1,0 +1,26 @@
+#!/bin/bash
+#find string
+#< ff $2 $2 >
+#[ ... string ]
+
+set +e
+
+case $1 in
+
+  d)
+    find . -type d -name "*$2"
+  ;;
+
+  f)
+    find . -type f -name "*$2"
+  ;;
+
+  s)
+    grep -r $2 .
+  ;;
+
+  *)
+    echo "[(d)irectory (f)ile (s)tring]"
+  ;;
+
+esac

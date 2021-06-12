@@ -1,0 +1,10 @@
+#!/bin/bash
+#clean cashe
+#< hh >
+#[  ]
+
+set +e
+
+sudo rm -r /Users/dm/Library/Caches/*
+sudo rm -r /Volumes/macbook/Library/Caches/*
+sudo rm -r /Volumes/macbook/System/Library/Caches/*

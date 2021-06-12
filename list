@@ -1,0 +1,30 @@
+#scripts 
+#< xx $1 >
+#[ ... ]
+
+aa sync mac & grey
+bb sync porsche & poulton
+cc sync mac & poulton
+dd sync dropbox & googledrive
+nn append ordinal number to files
+ff find directory & file & text
+gg curl > jq from json
+hh curl > grep > out from html
+ii extract citations
+jj run java app
+kk update cv
+ll compile latex file
+mm merge movie & subtitles
+nn run node app
+oo args grep chmod vi
+pp run python app
+qq clean cache
+rr find & rename directory & file & text
+ss find & rename directory & file | grep & sed text
+tt retrieve reference from article
+uu download youtube videos
+vv verify & repair Volume
+ww wetransfer file
+x
+y
+z

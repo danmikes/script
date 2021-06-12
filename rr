@@ -1,0 +1,39 @@
+#!/bin/bash
+#replace string
+#< rr $2 $3 >
+#[ ... string ]
+
+set +e
+
+x="mikes"
+
+case $1 in
+
+  d)
+    find . -type d -name "*$x$2*" | rename "s|$2|$3|g"
+  ;;
+
+  f)
+    find . -type f -name "*$x$2*" | rename "s|$2|$3|g"
+  ;;
+
+  s)
+    grep -rl "$x$2" . | xargs sed -i "" -e "s|$2|$3|g"
+  ;;
+
+  df)
+    find . -type d -name "*$x$2*" | rename "s|$2|$3|g"
+    find . -type f -name "*$x$2*" | rename "s|$2|$3|g"
+  ;;
+
+  dfs)
+    find . -type d -name "*$x$2*" | rename "s|$2|$3|g"
+    find . -type f -name "*$x$2*" | rename "s|$2|$3|g"
+    grep -rl "$x$2" . | xargs sed -i "" -e "s|$2|$3|g"
+  ;;
+
+  *)
+    echo "[(d)irectory (f)ile (s)tring]"
+  ;;
+
+esac

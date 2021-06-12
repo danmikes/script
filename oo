@@ -1,0 +1,29 @@
+#!/bin/bash
+#replace something
+#< oo $1 >
+#[ mod ren vi ]
+
+set +e
+
+case $1 in
+
+  args)
+    :args `locate '*.bib'`
+  ;;
+
+  grep)
+  ;;
+
+  mod)
+    chmod 755 $(find ./ -type d)
+    chmod 644 $(find ./ -type f)
+  ;;
+
+  vi)
+    vim `find . -name *.bib`
+  ;;
+
+  *)
+  ;;
+
+esac

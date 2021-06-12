@@ -1,0 +1,17 @@
+#!/bin/bash
+#verify & repair Permissions on Volume Macbook
+#< .vv >
+#[  ]
+
+set +e
+
+s='sudo'
+d='diskutil'
+v='verify'
+r='repair'
+V='Volume'
+M='/'
+
+#Volume
+$s $d $v$V $M
+$s $d $r$V $M

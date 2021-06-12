@@ -1,0 +1,9 @@
+#!/bin/bash
+#run java app
+#< jj $1 >
+#[ ... ]
+
+set +e
+
+javac $1.java
+java $1

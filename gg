@@ -1,0 +1,25 @@
+#!/bin/bash
+#save all top stories in file
+#< gg >
+#[ ]
+set +e
+
+url='https://hacker-news.firebaseio.com/v0'
+out='story.txt'
+
+x=$(curl -s $url/topstories.json | jq -r '.[0:10] | .[]')
+
+echo "url: $url" > $out
+echo "------------" >> $out
+
+for i in $x
+  do
+    story=$(curl -s $url/item/$i.json)
+
+    echo "title: $(echo $story | jq -r .title)" >> $out
+    echo "user: $(echo $story | jq -r .by)" >> $out
+    echo "user: $(echo $story | jq -r .url)" >> $out
+    echo "------------" >> $out
+  done
+
+cat story.txt

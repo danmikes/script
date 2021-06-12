@@ -1,0 +1,60 @@
+#!/bin/bash
+#extract citations
+#< ii >
+#[ ]
+
+set +e
+
+url='https://scholar.google.com/citations?user=A_j_04cAAAAJ&hl=en'
+head='<td class="gsc_rsb_std">'
+foot='</td>'
+
+dir=~/dan/cv/dat
+out=$dir/out.xml
+
+curl -s $url > $out
+string="$(grep -Irs $head.*$foot $out)"
+rm $out
+
+string="${string#*$head}"
+string="${string%$foot*}"
+
+total="${string%%$foot*}"
+
+string="${string#*$head}"
+total5="${string%%$foot*}"
+
+string="${string#*$head}"
+hindex="${string%%$foot*}"
+
+string="${string#*$head}"
+hindex5="${string%%$foot*}"
+
+string="${string#*$head}"
+iindex="${string%%$foot*}"
+
+string="${string#*$head}"
+iindex5="${string%%$foot*}"
+
+count=35
+count5=8
+cindex=$((((count+1)/2+total)/count))
+cindex5=$((((count5+1)/2+total5)/count5))
+
+[ $total  != 0 ] && echo $total  > $dir/total.dat
+[ $count  != 0 ] && echo $count  > $dir/count.dat
+[ $hindex != 0 ] && echo $hindex > $dir/hindex.dat
+[ $iindex != 0 ] && echo $iindex > $dir/iindex.dat
+[ $cindex != 0 ] && echo $cindex > $dir/cindex.dat
+
+#CURRENTDATE=`date +"%y%m%d %R"`
+#echo ${CURRENTDATE}
+
+#echo "----------------"
+printf "metric : all new\n"
+printf "total  : %3d %3d\n" $total $total5
+printf "count  : %3d %3d\n" $count $count5
+printf "hindex : %3d %3d\n" $hindex $hindex5
+printf "iindex : %3d %3d\n" $iindex $iindex5
+printf "cindex : %3d %3d\n" $cindex $cindex5
+#echo "----------------"

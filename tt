@@ -1,0 +1,7 @@
+#!/bin/bash
+#test
+#< tt >
+#[ ]
+
+set +e
+

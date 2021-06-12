@@ -1,0 +1,39 @@
+#!/bin/bash
+#download utube videos
+#< uu $1 >
+#[ v l c ]
+
+#youtube-dl https://<domain>/watch?v=<video>
+#youtube-dl https://<domain>/watch?list=<playlist>
+#youtube-dl https://<domain>/watch?channel=<channel>
+#youtube.com == youtu.be
+
+#youtube-dl -f best -ciw -o "%(title)s.%(ext)s" -v https://www.youtu.be/channel/UCs6vRDdkZ8bP8Xt6WHbvrwA
+
+set +e
+
+case $1 in
+
+  v)
+    youtube-dl https://youtu.be/watch?v=$2
+    ;;
+
+  l)
+    youtube-dl https://youtu.be/watch?list=$2
+    ;;
+
+  c)
+    youtube-dl https://www.youtu.be/watch?channel=$2
+    ;;
+
+  *)
+    echo -e "< uu > [ v/l/c ] < url >"
+    ;;
+
+esac
+
+for x in 1 2 3 4
+
+  do
+    youtube-dl https://youtube.be/watch!v=$x
+  done

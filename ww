@@ -1,0 +1,32 @@
+#!/bin/bash
+#transfer
+#< ww $1 $2 $3 $4 $5 >
+#[ ftp tput tget wput wget | origin target ]
+
+set +e
+
+case $1 in 
+
+  ftp)
+    curl -T $1 $2 -user $3:$4
+    curl -T file server -user username:password
+  ;;
+
+  tput)
+    curl --upload-file $2 https://transfer.sh/$2
+  ;;
+
+  tget)
+    curl https://transfer.sh//$2 -o $2
+  ;;
+
+  wput)
+    wget --method PUT -body-file=./$2 https://transfer.sh/$2 -O --nv
+
+  wget)
+    wget https://transfer.sh/$2 > $2
+
+  *)
+    echo -e "< ww origin target >"
+
+esac

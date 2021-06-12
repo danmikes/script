@@ -1,0 +1,22 @@
+#!/bin/bash
+#sync dropbox & googledrive
+#< dd >
+#[  ]
+
+set +e
+
+open -a "Dropbox"
+echo -e "dropbox"
+
+#open -a "Google Drive"
+# echo -e "gdrive on"
+
+ead -p "< <Enter> to continue >"
+
+#killall "Google Drive"
+# echo -e "gdrive off"
+
+killall "Dropbox"
+echo -e "dropbox off"
+
+say "ready"

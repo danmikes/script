@@ -1,0 +1,15 @@
+#!/bin/bash
+#append ordinal number to files in *.$1
+#< ee $1 >
+#[ ... ]
+
+set +e
+
+n=1
+
+for x in *.$1
+
+  do
+    mv $x y_$n.$1
+    let n++
+  done
