@@ -1,0 +1,40 @@
+#!/bin/bash
+#remove browser caches
+#< xx $1 >
+#[ du rm ]
+
+set +e
+
+dir='/Users/dm/Library/Caches'
+
+bra='com.brave.Browser/Cache.db'
+chr='com.apple.Chrom/Cache.db'
+edg='com.apple.Edge/Cache.db'
+fir='com.apple.Firefox/Cache.db'
+moz='com.apple.Mozilla/Cache.db'
+saf='com.apple.Safari/Cache.db'
+
+case $1 in 
+
+  du)
+    du -h $dir/$bra
+    du -h $dir/$chr
+    du -h $dir/$edg
+    du -h $dir/$fir
+    du -h $dir/$moz
+    du -h $dir/$saf
+  ;;
+
+  rm)
+    rm -h $dir/$bra
+    rm -h $dir/$chr
+    rm -h $dir/$edg
+    rm -h $dir/$fir
+    rm -h $dir/$moz
+    rm -h $dir/$saf
+  ;;
+
+  *)
+  ;;
+
+esac
