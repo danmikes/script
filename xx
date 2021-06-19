@@ -12,26 +12,25 @@ chr='com.apple.Chrom/Cache.db'
 edg='com.apple.Edge/Cache.db'
 fir='com.apple.Firefox/Cache.db'
 moz='com.apple.Mozilla/Cache.db'
+ope='com.apple.Opera/Cache.db'
 saf='com.apple.Safari/Cache.db'
+
+declare -a list=($bra $chr $edg $fir $moz $ope $saf)
 
 case $1 in 
 
   du)
-    du -h $dir/$bra
-    du -h $dir/$chr
-    du -h $dir/$edg
-    du -h $dir/$fir
-    du -h $dir/$moz
-    du -h $dir/$saf
+    for x in ${list[@]}
+      do
+        test -f $dir/$x && du -h $dir/$x
+      done
   ;;
 
   rm)
-    rm -h $dir/$bra
-    rm -h $dir/$chr
-    rm -h $dir/$edg
-    rm -h $dir/$fir
-    rm -h $dir/$moz
-    rm -h $dir/$saf
+    for x in ${list[@]}
+      do
+        test -f $dir/$x && rm $dir/$x
+      done
   ;;
 
   *)
