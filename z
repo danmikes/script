@@ -1,6 +1,0 @@
-#!/bin/bash
-#description
-#< zz $1 >
-#[ ... ]
-
-set +e
