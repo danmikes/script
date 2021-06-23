@@ -1,0 +1,29 @@
+#!bin/bash
+
+Local
+
+#~/.bashrc < mysql path
+echo 'export PATH="$PATH:/usr/local/mysql/bin"' > ~/.bashrc
+
+mysql -u beehiver -p tester!1234
+#beehiver tester!1234
+
+mysqldump -u beehiver -p tester!1234 beehive > beehive_db.sql
+#beehiver tester!1234
+
+scp beehive_db.sql cursist@miw-team-1.nl:beehive_db.sql
+#cursist cohort
+
+#package beehive.java -> beehive.jar
+scp beehive.jar cursist@miw-team-1.nl:beehive.jar
+
+Remote
+
+mysql -u dbamiw -p wimabd < beehive_db.sql
+#dbamiw wimabd
+
+ssh -l cursist miw-team-1.nl
+#cursist cohort
+
+java -jar beehive.jar
+java -jar pin.jar

@@ -1,0 +1,9 @@
+find [-H | -L | -P] [-EXdsx] [-f path] path ... [expression]
+find [-H | -L | -P] [-EXdsx] -f path [path ...] [expression]
+locate -- [-0Scims] [-l limit] [-d database] pattern ...
+sed
+grep
+xargs
+for dir in; do echo $dir; done
+for doc in; do echo $doc; done
+for str in; do echo $str; done

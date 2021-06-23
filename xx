@@ -7,13 +7,13 @@ set +e
 
 dir='/Users/dm/Library/Caches'
 
-bra='com.brave.Browser/Cache.db'
-chr='com.apple.Chrom/Cache.db'
-edg='com.apple.Edge/Cache.db'
-fir='com.apple.Firefox/Cache.db'
-moz='com.apple.Mozilla/Cache.db'
-ope='com.apple.Opera/Cache.db'
-saf='com.apple.Safari/Cache.db'
+bra=$dir/'com.brave.Browser/Cache.db'
+chr=$dir/'com.apple.Chrom/Cache.db'
+edg=$dir/'com.apple.Edge/Cache.db'
+fir=$dir/'com.apple.Firefox/Cache.db'
+moz=$dir/'com.apple.Mozilla/Cache.db'
+ope=$dir/'com.apple.Opera/Cache.db'
+saf=$dir/'com.apple.Safari/Cache.db'
 
 declare -a list=($bra $chr $edg $fir $moz $ope $saf)
 
@@ -22,18 +22,19 @@ case $1 in
   du)
     for x in ${list[@]}
       do
-        test -f $dir/$x && du -h $dir/$x
+        test -f $x && du -h $x
       done
   ;;
 
   rm)
     for x in ${list[@]}
       do
-        test -f $dir/$x && rm $dir/$x
+        test -f $x && rm $x
       done
   ;;
 
   *)
+    echo -e "xx [ du , rm ]"
   ;;
 
 esac
